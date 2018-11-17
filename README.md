@@ -1,4 +1,4 @@
-##################################################################################################################
+------
 
 ## Install Docker
 
@@ -8,7 +8,7 @@
 
     mkdir /docker/
 
-##################################################################################################################
+------
 
 ## mjpg-streamer
 
@@ -24,7 +24,7 @@
       --name=mjpg-streamer \
       mrwyss/mjpg-streamer
 
-##################################################################################################################
+------
 
 ## Octoprint
 
@@ -37,8 +37,6 @@
     mkdir /docker/octoprint
     mkdir /docker/octoprint/data
 
-
-
 ### Start the octoprint container
 
     docker run -d \
@@ -49,7 +47,7 @@
       --name=doctoprint \
       mtwiley/doctoprint
 
-##################################################################################################################
+------
 
 ## HAProxy
 
@@ -94,3 +92,15 @@
 ### Renew Certificate
 
     docker exec haproxy-certbot certbot-renew
+
+------
+
+## Backup/Restore
+
+### Backup
+
+tar -zcvf $(date +%Y-%m-%d)-octoprint_data.tar.gz -C /docker/octoprint/data .
+
+### Restore
+
+tar -xvf YYYY-MM-DD-octoprint_data.tar.gz -C /docker/octoprint/data
