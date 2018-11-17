@@ -4,6 +4,10 @@
 
 - https://docs.docker.com/install/
 
+### Setup folder to store persistent volumes
+
+    mkdir /docker/
+
 ##################################################################################################################
 
 ## mjpg-streamer
@@ -29,20 +33,20 @@
 
 ### Create the persistent directories on the docker machine
 
+    mkdir /docker/octoprint
     mkdir /docker/octoprint/github
     mkdir /docker/octoprint/data
 
-### Copy in the haproxy.cfg file
+### Build the docker image so that you have the latest version of octoprint
 
-    cd $ThisRepoLocation/Octoprint/
-    cp haproxy.cfg /docker/haproxy/config/
+docker built -t
 
 ### Start the octoprint container
 
     docker run -d \
       --restart=always \
-      --p 5000:5000 \
-      --device=/dev/ttyUSB0 \ #
+      -p 5000:5000 \
+      --device=/dev/ttyUSB0 \
       -v /docker/octoprint/github/:/octoprint \
       -v /docker/octoprint/data/:/data \
       --name=octoprint \
@@ -57,6 +61,7 @@
 
 ### Create the directories on the docker machine
 
+    mkdir /docker/haproxy/
     mkdir /docker/haproxy/config
     mkdir /docker/haproxy/letsencrypt
     mkdir /docker/haproxy/certs.d
