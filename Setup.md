@@ -4,7 +4,7 @@
 
 - https://docs.docker.com/install/
 
-### Setup folder to store persistent volumes
+### Setup folder to store data you want to be persistent
 
     mkdir /docker/
 
@@ -31,15 +31,13 @@
 - https://store.docker.com/community/images/mrwyss/octoprint
 - https://github.com/MrWyss/octoprint-docker
 
+
 ### Create the persistent directories on the docker machine
 
     mkdir /docker/octoprint
-    mkdir /docker/octoprint/github
     mkdir /docker/octoprint/data
 
-### Build the docker image so that you have the latest version of octoprint
 
-docker built -t
 
 ### Start the octoprint container
 
@@ -47,10 +45,9 @@ docker built -t
       --restart=always \
       -p 5000:5000 \
       --device=/dev/ttyUSB0 \
-      -v /docker/octoprint/github/:/octoprint \
       -v /docker/octoprint/data/:/data \
-      --name=octoprint \
-      mrwyss/octoprint
+      --name=doctoprint \
+      mtwiley/doctoprint
 
 ##################################################################################################################
 
@@ -90,7 +87,7 @@ docker built -t
       --domain wiley-apex.ddns.net \
       --email michaeltwiley@gmail.com
 
-### Pickup Changes to Certs
+### Pickup Changes to Certs/haproxy.cfg
 
     docker exec haproxy-certbot haproxy-refresh
 
