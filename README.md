@@ -1,5 +1,3 @@
-------
-
 ## Install Docker
 
 - https://docs.docker.com/install/
@@ -63,8 +61,7 @@
 
 ### Copy in the haproxy.cfg file
 
-    cd $ThisRepoLocation/Octoprint/
-    cp HAProxy/haproxy.cfg /docker/haproxy/config/
+    cp $ThisRepoLocation/haproxy.cfg /docker/haproxy/config/
 
 ### Start the haproxy container
 
