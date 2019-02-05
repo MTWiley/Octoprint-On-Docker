@@ -1,0 +1,2 @@
+alias rsyncpush="rsync -auv ~/mikes_mbp_rsync/ root@wiley-apex.ddns.net:~/mikes_mbp_rsync/"
+alias rsyncpull="rsync -auv root@wiley-apex.ddns.net:~/mikes_mbp_rsync/ ~/mikes_mbp_rsync/"
